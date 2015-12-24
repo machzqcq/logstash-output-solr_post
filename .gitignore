@@ -2,5 +2,5 @@
 Gemfile.lock
 .bundle
 vendor
-*/.idea/*
+.idea/
 

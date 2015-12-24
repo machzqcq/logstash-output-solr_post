@@ -73,6 +73,8 @@ where 'mycollection' is the name of your collection. We require collection name 
 
 We have used the above conf and were able to use this plugin to pipe events through the pipeline. We were also able to view the events in Banana. Below is how it looked for us  
 
+![Banana Dashboard](https://github.com/machzqcq/logstash-output-solr_post/blob/master/images/Banana.JPG "Banana Dashboard")
+
 
 
 

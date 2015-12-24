@@ -47,6 +47,7 @@ class LogStash::Outputs::SolrPost < LogStash::Outputs::Base
 
   public
   def flush(events, close=false)
+    # The documents array below is NOT being used currently, however the next version will utilize this.
     documents = []  #this is the array of hashes that we push to Solr as documents
 
     events.each do |event|

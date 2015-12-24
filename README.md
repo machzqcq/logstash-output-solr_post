@@ -27,8 +27,13 @@ Specifically, we want the same [logstash server](https://www.elastic.co/products
 
 It is possible to do a simple http POST to solr end point and post documents. Hence, we wrote simple logic extending logstash output base class and POST the event to solr endpoint. Of course, since solr expects the http post payload to be in a certain format, we format the event and then directly do a POST. That is it! 
 
-## Example
-### Logstash conf
+## Working Example  
+
+### Solr  
+Version: 5.3.1  
+**Note:** We tried starting solr in schemaless mode (gettingstarted collection automatically created), however we did not have success posting events directly to http://localhost:8983/solr/update?commit=true&wt=json endpoint
+
+### Logstash (2.0.0) conf
 ```
 input {
   tcp {
@@ -45,7 +50,7 @@ output {
 ```  
 where 'mycollection' is the name of your collection. We require collection name in the url   
 
-### nxlog conf
+### Windows nxlog (nxlog-ce-2.9.1347) conf
 ```
 <Extension json>
   Module xm_json
@@ -73,9 +78,14 @@ where 'mycollection' is the name of your collection. We require collection name 
 
 We have used the above conf and were able to use this plugin to pipe events through the pipeline. We were also able to view the events in Banana. Below is how it looked for us  
 
-![Banana Dashboard](https://github.com/machzqcq/logstash-output-solr_post/blob/master/images/Banana.JPG "Banana Dashboard")
+![Banana Dashboard](https://github.com/machzqcq/logstash-output-solr_post/blob/master/images/banana_dashboard.JPG "Banana Dashboard")  
 
+## TODO
 
+1. Use idle flush time, flush size & documents parameters (currently it is declared inside the code but not used)
+2. Write rspec unit tests
+3. Support for XML (depends on need for the community)
+4. Miscellaneous
 
 
 ## Contributing

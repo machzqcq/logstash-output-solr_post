@@ -27,6 +27,55 @@ Specifically, we want the same [logstash server](https://www.elastic.co/products
 
 It is possible to do a simple http POST to solr end point and post documents. Hence, we wrote simple logic extending logstash output base class and POST the event to solr endpoint. Of course, since solr expects the http post payload to be in a certain format, we format the event and then directly do a POST. That is it! 
 
+## Example
+### Logstash conf
+```
+input {
+  tcp {
+    type => "eventlog"
+    port => 5544
+    codec=> "json"
+    }
+  }
+output {
+  solr_post{
+    solr_url => "http://localhost:8983/solr/mycollection/update?commit=true&wt=json"
+    }
+  }
+```  
+where 'mycollection' is the name of your collection. We require collection name in the url   
+
+### nxlog conf
+```
+<Extension json>
+  Module xm_json
+</Extension>
+
+<Extension xml>
+  Module xm_xml
+</Extension>
+
+<Input in>
+    Module im_msvistalog
+  Exec $raw_event=to_json(); 
+</Input>
+
+<Output out>
+  Module om_tcp
+  Host 127.0.0.1
+  Port 5544
+</Output>
+
+<Route r>
+  Path in => out
+</Route>
+```  
+
+We have used the above conf and were able to use this plugin to pipe events through the pipeline. We were also able to view the events in Banana. Below is how it looked for us  
+
+
+
+
 ## Contributing
 
 1. Fork it

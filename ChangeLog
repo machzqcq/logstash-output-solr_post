@@ -1,0 +1,2 @@
+=== Version 0.1
+* Initial release with basic functionality for logstash output to solr

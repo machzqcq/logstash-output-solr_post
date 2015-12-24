@@ -96,7 +96,8 @@ We have used the above conf and were able to use this plugin to pipe events thro
 1. Use idle flush time, flush size & documents parameters (currently it is declared inside the code but not used)
 2. Write rspec unit tests
 3. Support for XML (depends on need for the community)
-4. Miscellaneous
+4. Register this plugin for logstash plugin binary
+5. Miscellaneous
 
 
 ## Contributing

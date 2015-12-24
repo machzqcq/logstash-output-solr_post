@@ -21,7 +21,18 @@ Though the example provided with customized version of [SiLK logstash](https://d
 2. We would like to use this existing logstash server and NOT have to re-invent the wheel
 3. We want multiple conf files to be loaded by logstash server, which the SiLK 1.5 solrWriter for logstash did not allow as per their documentation
 
-Specifically, we want the same [logstash server](https://www.elastic.co/products/logstash) (that elastic search provides) to work with solr. It should be as simple as install a plugin, write the output conf and see the pipeline work, by viewing the events on the other side of solr
+Specifically, we want the same [logstash server](https://www.elastic.co/products/logstash) (that elastic search provides) to work with solr. It should be as simple as install a plugin, write the output conf and see the pipeline work, by viewing the events on the other side of solr  
+
+## Installing and using  
+
+1. git clone 
+2. JRUBY >=1.7 (We tried with MRI Ruby, however that did not go well. Guess because logstash is developed in JRUBY)
+3. If you are on windows, use pik and switch to use jruby (pik use <identifier>). If on *nix, use rvm to switch to jruby
+4. jgem build logstash-output-solr_post.gemspec (output should be a gem like logstash-output-solr_post-0.1.gem
+5. Copy this gem to ~/logstash root folder
+6. Install as output plugin to logstash using "./bin/plugin install logstash-output-solr_post-0.1.gem"
+7. ./bin/plugin list to verify that the plugin installed successfully and registered as output plugin
+8. See the next section on usage instructions
 
 ## How does this plugin do it  
 
@@ -85,7 +96,8 @@ We have used the above conf and were able to use this plugin to pipe events thro
 1. Use idle flush time, flush size & documents parameters (currently it is declared inside the code but not used)
 2. Write rspec unit tests
 3. Support for XML (depends on need for the community)
-4. Miscellaneous
+4. Register this plugin for logstash plugin binary
+5. Miscellaneous
 
 
 ## Contributing

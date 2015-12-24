@@ -13,14 +13,15 @@ Logstash provides infrastructure to automatically generate documentation for thi
 
 ## Why this plugin
 
-When setting up logging stacks, we weren't able to use the solr_http output plugin in logstash conf to talk to solr
+When setting up logging stacks, we weren't able to use the [solr_http](https://rubygems.org/gems/logstash-output-solr_http) output plugin in logstash conf to talk to solr
 On the other hand, we found SiLK 1.5 stack is shipping its own customized version of logstash, which is a java jar file.
 Though the example provided with customized version of [SiLK logstash](https://docs.lucidworks.com/display/SiLK/Solr+Writer+for+Logstash+Initial+Setup) was able to pipe events to solr server, our needs were
 
-1. We already had a logstash server running for a while and it had a great ecosystem of input, filter and outpput plugins
+1. We already had a logstash server running for a while and it had a great ecosystem of input, filter and output plugins
 2. We would like to use this existing logstash server and NOT have to re-invent the wheel
+3. We want multiple conf files to be loaded by logstash server, which the SiLK 1.5 solrWriter for logstash did not allow as per their documentation
 
-Specifically, we want the same logstash server (that elastic search provides) to work with solr. It should be as simple as install a plugin, write the output conf and see the pipeline work, by viewing the events on the other side of solr
+Specifically, we want the same [logstash server](https://www.elastic.co/products/logstash) (that elastic search provides) to work with solr. It should be as simple as install a plugin, write the output conf and see the pipeline work, by viewing the events on the other side of solr
 
 ## How does this plugin do it  
 

@@ -4,6 +4,7 @@ Gem::Specification.new do |s|
   s.version         = '0.1'
   s.licenses        = ['MIT']
   s.email           = ['pradeep@seleniumframework.com']
+  s.licenses        = ['MIT']
   s.summary         = "This output lets you index&store your logs in Solr."
   s.description     = "This gem is a logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/plugin install gemname. This gem is not a stand-alone program"
   s.authors         = ["Pradeep K. Macharla","Venkatesh R. Peruvemba"]
